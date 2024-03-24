@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+
+  similarsongsfinder:
+    build:
+      context: .
+    container_name: similarsongsfinder
+    env_file:
+      - .env
+    command: sh -c "gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    
