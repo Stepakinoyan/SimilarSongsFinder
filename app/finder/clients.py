@@ -1,6 +1,7 @@
 from spotipy import Spotify
-from fastapi import status
+from fastapi import status, HTTPException
 
+from app.exceptions import SongsAddedMessage
 from app.finder.recommendations_schema import Recommendations
 from app.finder.schema import Total
 
@@ -29,4 +30,4 @@ def add_songs(tracks: list, token: str):
     playlist = spotify.user_playlist_create(user=user_id, name="Generated playlist")
     spotify.playlist_add_items(playlist_id=playlist["id"], items=tracks)
 
-    return status.HTTP_201_CREATED
+    raise SongsAddedMessage
