@@ -24,3 +24,8 @@ class AddSongException(BaseHTTPException):
 class FindSimilarSongsException(BaseHTTPException):
     status_code = status.HTTP_400_BAD_REQUEST
     detail = "Recommendations error"
+
+
+class SongsAddedMessage(BaseHTTPException):
+    status_code = status.HTTP_201_CREATED
+    detail = "Songs added successfully"
